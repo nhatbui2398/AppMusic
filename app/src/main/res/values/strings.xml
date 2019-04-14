@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppMusic</string>
+    <string name="homePage">Trang Chủ</string>
+    <string name="titleSearch">Tìm Kiếm</string>
 </resources>
