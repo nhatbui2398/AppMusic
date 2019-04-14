@@ -2,4 +2,6 @@
     <string name="app_name">AppMusic</string>
     <string name="homePage">Trang Chủ</string>
     <string name="titleSearch">Tìm Kiếm</string>
+    <string name="defaultSongTitle">Lo Yeu Mat Roi</string>
+    <string name="viewMorePlayPlist">Xem thêm PlayList</string>
 </resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView_playlist_background"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/defaultHeightPlayList_"
+        />
+    <View
+        android:background="@drawable/custom_background_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/defaultHeightPlayList_"/>
+    <ImageView
+        android:id="@+id/imageView_PLayList"
+        android:layout_alignBottom="@+id/imageView_playlist_background"
+        android:elevation="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="@dimen/defaultImageIcon"
+        android:layout_height="@dimen/defaultImageIcon" />
+    <TextView
+        android:id="@+id/tv_title_playlist"
+        android:layout_alignBottom="@+id/imageView_playlist_background"
+        android:layout_toRightOf="@+id/imageView_PLayList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/defaultSongTitle"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginLeft="13dp"
+        />
+
+
+</RelativeLayout>

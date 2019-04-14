@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_background_banner"
+    android:gravity="center"
+    >
+    <TextView
+        android:id="@+id/tv_playList_name"
+        android:textSize="30sp"
+        android:text="@string/defaultSongTitle"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <ListView
+        android:id="@+id/listview_playlist"
+        android:layout_below="@+id/tv_playList_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/tv_view_more_play_list"
+        android:layout_below="@+id/listview_playlist"
+        android:text="@string/viewMorePlayPlist"
+        android:textSize="20sp"
+        android:drawableStart="@drawable/iconmoreplaylist"
+        android:drawablePadding="10dp"
+        android:background="@color/gray"
+        android:layout_marginTop="10dp"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        />
+
+</RelativeLayout>

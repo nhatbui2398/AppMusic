@@ -6,4 +6,8 @@
     <color name="purple">#a845de</color>
     <color name="black">#000000</color>
     <color name="transparent">#FFFFFFFF</color>
+    <color name="startColorBGBanner">#20fdfdfd</color>
+    <color name="endColorBGBanner">#d00b0b0b</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#c9c7c7</color>
 </resources>
