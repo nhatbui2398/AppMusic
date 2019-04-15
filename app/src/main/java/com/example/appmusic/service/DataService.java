@@ -1,5 +1,7 @@
 package com.example.appmusic.service;
 
+import com.example.appmusic.model.Album;
+import com.example.appmusic.model.BaiHat;
 import com.example.appmusic.model.ChuDeTheLoaiTrongNgay;
 import com.example.appmusic.model.PlayList;
 import com.example.appmusic.model.QuangCao;
@@ -18,4 +20,10 @@ public interface DataService {
 
     @GET("getChuDeTheLoai.php")
     Call<ChuDeTheLoaiTrongNgay> getChuDeTheLoaiTrongNgay();
+
+    @GET("getAlbum.php")
+    Call<List<Album>> getAlbum();
+
+    @GET("getBHYeuThich.php")
+    Call<List<BaiHat>> getBaiHatHot();
 }

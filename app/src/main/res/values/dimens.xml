@@ -7,4 +7,7 @@
     <dimen name="defaultHeightPlayList">50dp</dimen>
     <dimen name="defaultHeightPlayList_">110dp</dimen>
     <dimen name="defaultImageIcon">50dp</dimen>
+    <dimen name="defaultAlbumSize">200dp</dimen>
+    <dimen name="defaultImageSong">80dp</dimen>
+    <dimen name="defaultIconLike">30dp</dimen>
 </resources>

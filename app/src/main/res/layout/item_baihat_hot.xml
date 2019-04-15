@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <ImageView
+        android:id="@+id/img_baihat_hot"
+        android:layout_width="@dimen/defaultImageSong"
+        android:layout_height="@dimen/defaultImageSong"
+        android:scaleType="fitXY"
+        android:layout_margin="5dp"
+        />
+    <TextView
+        android:id="@+id/tv_ten_baihat_hot"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/img_baihat_hot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Ten bai hat"
+        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:maxLines="1"
+        />
+    <TextView
+        android:id="@+id/tv_casi_baihat_hot"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/img_baihat_hot"
+        android:layout_below="@+id/tv_ten_baihat_hot"
+        android:textSize="18sp"
+        android:text="Ten bai hat"
+        android:textColor="@color/gray"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <ImageView
+        android:id="@+id/img_icon_yeuthich"
+        android:src="@drawable/iconlove"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/defaultIconLike"
+        android:layout_height="@dimen/defaultIconLike"
+
+        />
+
+</RelativeLayout>

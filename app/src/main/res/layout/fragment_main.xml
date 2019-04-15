@@ -29,7 +29,16 @@
             android:id="@+id/fragment_chude_theloai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+        <fragment
+            android:name="com.example.appmusic.fragment.FragmentAlbum"
+            android:id="@+id/fragment_album"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.example.appmusic.fragment.FragmentBaiHatHot"
+            android:id="@+id/fragment_baihat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
