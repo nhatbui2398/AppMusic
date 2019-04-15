@@ -30,7 +30,7 @@ public class PLayListAdapter extends ArrayAdapter<PlayList> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_playlist, parent,false);
             viewHolder = new ViewHolder();

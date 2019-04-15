@@ -2,7 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    >
 
     <ImageView
         android:id="@+id/imageView_playlist_background"
@@ -25,7 +27,7 @@
         android:layout_height="@dimen/defaultImageIcon" />
     <TextView
         android:id="@+id/tv_title_playlist"
-        android:layout_alignBottom="@+id/imageView_playlist_background"
+        android:layout_alignTop="@+id/imageView_PLayList"
         android:layout_toRightOf="@+id/imageView_PLayList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
