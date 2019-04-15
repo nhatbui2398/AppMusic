@@ -60,14 +60,14 @@ public class FragmentBanner extends Fragment {
                 adapter = new BannerAdapter(getContext(), banners);
                 viewPager.setAdapter(adapter);
                 circleIndicator.setViewPager(viewPager);
+                currentItem = viewPager.getCurrentItem();
                 handler = new Handler();
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        currentItem = viewPager.getCurrentItem();
-                        currentItem++;
                         viewPager.setCurrentItem(currentItem, true);
-                        if (currentItem > viewPager.getAdapter().getCount()-1){
+                        currentItem++;
+                        if (currentItem > viewPager.getAdapter().getCount()){
                             currentItem = 0;
                         }
                         handler.postDelayed(runnable, 4000);

@@ -8,4 +8,5 @@
     <string name="seeMore">Xem thêm</string>
     <string name="albumHot">ALBUM HOT</string>
     <string name="baiHaiHot">CÓ THỂ BẠN THÍCH</string>
+    <string name="defaultNumber">0</string>
 </resources>

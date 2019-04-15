@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    android:layout_margin="5dp"
+    >
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_dsbh_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/defaultNumber"
+            android:layout_marginEnd="10dp"
+            />
+        <TextView
+            android:id="@+id/tv_dsbh_song_name"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/tv_dsbh_index"
+            android:text="@string/defaultSongTitle"
+            android:textSize="20sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_dsbh_song_artist"
+            android:textColor="@color/gray"
+            android:layout_toEndOf="@+id/tv_dsbh_index"
+            android:layout_below="@+id/tv_dsbh_song_name"
+            android:text="@string/defaultSongTitle"
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/img_dsbh_like"
+            android:src="@drawable/iconlove"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/defaultIconLike"
+            android:layout_height="@dimen/defaultIconLike"
+            />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,6 +1,7 @@
 package com.example.appmusic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appmusic.R;
+import com.example.appmusic.activity.DanhSachBaiHatActivity;
 import com.example.appmusic.model.QuangCao;
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +39,7 @@ public class BannerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_banner,null);
 
         ImageView imgBackGroundBanner = view.findViewById(R.id.imageView_banner);
@@ -49,6 +52,14 @@ public class BannerAdapter extends PagerAdapter {
         tvTitleSong.setText(list.get(position).getTenBaiHat());
         tvContent.setText(list.get(position).getNoiDung());
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DanhSachBaiHatActivity.class);
+                intent.putExtra("Banner", list.get(position));
+                context.startActivity(intent);
+            }
+        });
         container.addView(view);
         return view;
     }
