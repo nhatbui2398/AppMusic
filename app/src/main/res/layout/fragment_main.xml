@@ -24,6 +24,11 @@
             android:id="@+id/fragment_playlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <fragment
+            android:name="com.example.appmusic.fragment.FragmentChuDeTheLoai"
+            android:id="@+id/fragment_chude_theloai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
