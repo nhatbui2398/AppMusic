@@ -1,5 +1,6 @@
 package com.example.appmusic.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.appmusic.R;
+import com.example.appmusic.activity.DanhSachBaiHatActivity;
 import com.example.appmusic.model.ChuDe;
 import com.example.appmusic.model.ChuDeTheLoaiTrongNgay;
 import com.example.appmusic.model.TheLoai;
@@ -74,6 +76,14 @@ public class FragmentChuDeTheLoai extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), DanhSachBaiHatActivity.class);
+                            intent.putExtra("ChuDe",chuDeArrayList.get(finalI));
+                        }
+                    });
                 }
                 //
                 for (int i = 0; i < theLoaiArrayList.size(); i++){
@@ -89,6 +99,15 @@ public class FragmentChuDeTheLoai extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), DanhSachBaiHatActivity.class);
+                            intent.putExtra("TheLoai",theLoaiArrayList.get(finalI));
+                            startActivity(intent);
+                        }
+                    });
                 }
                 horizontalScrollView.addView(linearLayout);
             }
