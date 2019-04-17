@@ -18,8 +18,11 @@ public interface DataService {
     @GET("getBanner.php")
     Call<List<QuangCao>> getDataBanner();
 
-    @GET("getPlayList.php")
+    @GET("getPlayListCurrentDay.php")
     Call<List<PlayList>> getPlayListCurrentDay();
+
+    @GET("getPlayList.php")
+    Call<List<PlayList>> getAllPlayList();
 
     @GET("getChuDeTheLoai.php")
     Call<ChuDeTheLoaiTrongNgay> getChuDeTheLoaiTrongNgay();
@@ -31,6 +34,15 @@ public interface DataService {
     Call<List<BaiHat>> getBaiHatHot();
 
     @FormUrlEncoded
-    @POST("getDSBHQC.php")
+    @POST("getDanhSachBaiHat.php")
     Call<List<BaiHat>> getDSBHQuangCao(@Field("IDQuangCao") String idQC);
+
+
+    @FormUrlEncoded
+    @POST("getDanhSachBaiHat.php")
+    Call<List<BaiHat>> getDSBHPlayList(@Field("IDPlayList") String idPlayList);
+
+    @FormUrlEncoded
+    @POST("getDanhSachBaiHat.php")
+    Call<List<BaiHat>> getDSBHTheLoai(@Field("IDTheLoai") String idTheLoai);
 }

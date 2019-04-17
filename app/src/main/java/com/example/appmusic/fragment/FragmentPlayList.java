@@ -1,5 +1,6 @@
 package com.example.appmusic.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,12 +9,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.appmusic.R;
+import com.example.appmusic.activity.DanhSachBaiHatActivity;
+import com.example.appmusic.activity.DanhSachPlayListActivity;
 import com.example.appmusic.adapter.PLayListAdapter;
 import com.example.appmusic.model.PlayList;
 import com.example.appmusic.service.APIService;
@@ -45,6 +49,14 @@ public class FragmentPlayList extends Fragment {
         tvPlayListName = view.findViewById(R.id.tv_playList_name);
         listViewPlayList = view.findViewById(R.id.listview_playlist);
         tvSeeMorePlayList = view.findViewById(R.id.tv_view_more_play_list);
+
+        tvSeeMorePlayList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DanhSachPlayListActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
     private void getData(){
@@ -56,9 +68,17 @@ public class FragmentPlayList extends Fragment {
                 ArrayList<PlayList> playLists = (ArrayList<PlayList>) response.body();
                 Log.e("PlayList",""+playLists.get(0).getTenPlayList());
                 lists = playLists;
-                adapter = new PLayListAdapter(getContext(), android.R.layout.simple_list_item_1, lists);
+                adapter = new PLayListAdapter(getActivity(), android.R.layout.simple_list_item_1, lists);
                 listViewPlayList.setAdapter(adapter);
                 setListViewHeightBasedOnChildren(listViewPlayList);
+                listViewPlayList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(), DanhSachBaiHatActivity.class);
+                        intent.putExtra("ItemPlayList", lists.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

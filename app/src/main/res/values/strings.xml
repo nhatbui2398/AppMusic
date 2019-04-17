@@ -9,4 +9,6 @@
     <string name="albumHot">ALBUM HOT</string>
     <string name="baiHaiHot">CÓ THỂ BẠN THÍCH</string>
     <string name="defaultNumber">0</string>
+    <string name="playListTitle">Play Lists</string>
+    <string name="variousArtists">Various Artists</string>
 </resources>

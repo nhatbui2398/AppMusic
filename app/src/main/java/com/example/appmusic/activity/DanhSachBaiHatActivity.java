@@ -10,23 +10,27 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.appmusic.R;
+import com.example.appmusic.adapter.DanhSachBaiHatAdapter;
 import com.example.appmusic.model.BaiHat;
+import com.example.appmusic.model.PlayList;
 import com.example.appmusic.model.QuangCao;
+import com.example.appmusic.model.TheLoai;
 import com.example.appmusic.service.APIService;
 import com.example.appmusic.service.DataService;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,18 +41,38 @@ import retrofit2.Response;
 
 public class DanhSachBaiHatActivity extends AppCompatActivity {
     private QuangCao quangCao;
+    private PlayList playList;
+    private TheLoai theLoai;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Toolbar toolbar;
     private CoordinatorLayout coordinatorLayout;
     private RecyclerView rcv_dsbh;
     private FloatingActionButton floatingActionButton;
     private ImageView imgViewBaiHat;
+    private DanhSachBaiHatAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_sach_bai_hat);
         connectView();
-        getData();
+        getDataIntent();
+
+
+    }
+
+    private void checkDataType() {
+        if (quangCao != null && !TextUtils.isEmpty(quangCao.getHinhBaiHat())){
+            setValueInView(quangCao.getTenBaiHat(), quangCao.getHinhBaiHat());
+            getDataQuangCao(quangCao.getIDQuangCao());
+        }
+        if (playList != null && !TextUtils.isEmpty(playList.getHinhNenPlayList())){
+            setValueInView(playList.getTenPlayList(), playList.getHinhIcon());
+            getDataPlayList(playList.getIDPlayList());
+        }
+        if (theLoai != null && !TextUtils.isEmpty(theLoai.getHinhTheLoai())){
+            setValueInView(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
+            getDataTheLoai(theLoai.getHinhTheLoai());
+        }
 
     }
 
@@ -64,10 +88,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
 
-        if (quangCao != null && !TextUtils.isEmpty(quangCao.getHinhBaiHat())){
-            setValueInView(quangCao.getTenBaiHat(), quangCao.getHinhBaiHat());
-            getDataQuangCao(quangCao.getIDQuangCao());
-        }
+
     }
 
     private void getDataQuangCao(String idQuangCao) {
@@ -77,12 +98,56 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 ArrayList<BaiHat> baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                adapter = new DanhSachBaiHatAdapter(getApplicationContext(), baiHatArrayList);
+                rcv_dsbh.setAdapter(adapter);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false);
+                rcv_dsbh.setLayoutManager(linearLayoutManager);
 
             }
 
             @Override
             public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+                Log.e("Failure",""+t);
+            }
+        });
+    }
 
+    private void getDataPlayList(String idPlayList) {
+        DataService dataService = APIService.getService();
+        Call<List<BaiHat>> callBack = dataService.getDSBHPlayList(idPlayList);
+        callBack.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+                ArrayList<BaiHat> baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                adapter = new DanhSachBaiHatAdapter(getApplicationContext(), baiHatArrayList);
+                rcv_dsbh.setAdapter(adapter);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false);
+                rcv_dsbh.setLayoutManager(linearLayoutManager);
+            }
+
+            @Override
+            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+                Log.e("Failure",""+t);
+            }
+        });
+    }
+
+    private void getDataTheLoai(String idTheLoai) {
+        DataService dataService = APIService.getService();
+        Call<List<BaiHat>> callBack = dataService.getDSBHTheLoai(idTheLoai);
+        callBack.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+                ArrayList<BaiHat> baiHatArrayList = (ArrayList<BaiHat>) response.body();
+                adapter = new DanhSachBaiHatAdapter(getApplicationContext(), baiHatArrayList);
+                rcv_dsbh.setAdapter(adapter);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false);
+                rcv_dsbh.setLayoutManager(linearLayoutManager);
+            }
+
+            @Override
+            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
+                Log.e("Failure",""+t);
             }
         });
     }
@@ -115,11 +180,23 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         initView();
     }
 
-    private void getData() {
+    private void getDataIntent() {
         Intent intent = getIntent();
         if (intent != null){
-            quangCao = (QuangCao) intent.getSerializableExtra("Banner");
-            Toast.makeText(this,""+quangCao.getTenBaiHat(),Toast.LENGTH_SHORT).show();
+            if (intent.hasExtra("Banner")){
+                quangCao = (QuangCao) intent.getSerializableExtra("Banner");
+                Toast.makeText(this,""+quangCao.getTenBaiHat(),Toast.LENGTH_SHORT).show();
+            }else if (intent.hasExtra("ItemPlayList")) {
+                playList = (PlayList) intent.getSerializableExtra("ItemPlayList");
+                Toast.makeText(this, "" + playList.getTenPlayList(), Toast.LENGTH_SHORT).show();
+            }
+            else if (intent.hasExtra("TheLoai")) {
+                theLoai = (TheLoai) intent.getSerializableExtra("TheLoai");
+                Toast.makeText(this, "" + theLoai.getTenTheLoai(), Toast.LENGTH_SHORT).show();
+            }
         }
+        else return;
+        checkDataType();
+
     }
 }
